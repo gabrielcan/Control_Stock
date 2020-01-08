@@ -15,102 +15,102 @@ Los métodos para estas categorías de producto serán
 ·       Consultar stock de un producto determinado
 ·       Consultar precio de un producto determinado*/
 
-class Producto{
-    constructor(nombre,precio,cat){
-        this.nombre=nombre;
-        this.precio=precio;
+class Producto {
+    constructor(nombre, precio, cat) {
+        this.nombre = nombre;
+        this.precio = precio;
         //this.cantidad=1; // el stock se calcula
-        this.categoria=cat;
+        this.categoria = cat;
     }
-    
+
 }
 
-class Gestion{
+class Gestion {
 
-    constructor(){
-        this.listarProductos=[];
+    constructor() {
+        this.listarProductos = [];
     }
 
-    agregarProductos(productNuevo){
+    agregarProductos(productNuevo) {
 
-    const productoEnLista = this.listarProductos.find(function(producto) {
+        const productoEnLista = this.listarProductos.find(function (producto) {
             return productNuevo.nombre == producto.nombre;
-          })
-           
-          if (productoEnLista) {
-              productoEnLista.cantidad++;
-          } else {
+        })
+
+        if (productoEnLista) {
+            productoEnLista.cantidad++;
+        } else {
             this.listarProductos.push(productNuevo);
-          }
+        }
+    }
+
+
+
+
+
+    cambiarCantidadstock() {
+
+    }
+
+    cambiarPrecio() {
+
+    }
+
+    mostrarProductos() {
+
+        for (let i = 0; i < this.listarProductos.length; i++) {
+
+            console.log(this.listarProductos[i])
         }
 
-    
-    
-    
-    
-    cambiarCantidadstock(){
-    
     }
-    
-    cambiarPrecio(){
-    
-    }
-    
-    mostrarProductos(){
 
-        for(let i=0;i<this.listarProductos.length;i++){
+    consultarStockProducto(nombre) {
 
-        console.log(this.listarProductos[i])
-        }
- 
     }
-    
-    consultarStockProducto(nombre){
-    
-    }
-    
-    consultarPrecioProducto(prodBuscado){
-    
-        const precioProduct = this.listarProductos.find(function(producto) {
-            return prodBuscado==producto.nombre;
-          })    
 
-          if(precioProduct){
-              console.log('el precio del producto ',precioProduct.nombre,'es: ',precioProduct.precio)
-          } else {
+    consultarPrecioProducto(prodBuscado) {
+
+        const precioProduct = this.listarProductos.find(function (producto) {
+            return prodBuscado == producto.nombre;
+        })
+
+        if (precioProduct) {
+            console.log('el precio del producto ', precioProduct.nombre, 'es: ', precioProduct.precio)
+        } else {
             console.log('No hay coincidencias del producto buscado');
-          }
+        }
     }
 }
 
- let cant= prompt('ingrese cantidad de productos a crear')
+let cant = prompt('ingrese cantidad de productos a crear')
 
- const agregar=new Gestion();
+const agregar = new Gestion();
 
- for (let i = 0; i < cant; i++) {
-         
-let nombreP= prompt('Ingrese Nombre de producto: ');
-let valorP= prompt('Ingrese Precio del producto: ');
-let categP= prompt('Ingrese numero del grupo del producto (0: Comestibles y 1: Bebidas): ');
-if(categP==0){
-    categP='bebida';
-} else {
-    categP='comestible';
+for (let i = 0; i < cant; i++) {
+
+    let nombreP = prompt('Ingrese Nombre de producto: ');
+    let valorP = prompt('Ingrese Precio del producto: ');
+    let categP = prompt('Ingrese numero del grupo del producto (0: Comestibles y 1: Bebidas): ');
+    if (categP == 0) {
+        categP = 'bebida';
+    } else {
+        categP = 'comestible';
+    }
+    const producto1 = new Producto(nombreP, valorP, categP);
+
+
+    agregar.agregarProductos(producto1);
+
+    //  console.log(producto1);
+
 }
-const producto1=new Producto(nombreP,valorP,categP);
 
-
-agregar.agregarProductos(producto1);
-
-//  console.log(producto1);
-
-}
-
-const categoria = ['bebida','comestible'];
-const coca = new Producto('coca',10,categoria[0]);    
-const birra = new Producto('andes',11,categoria[0]);    
-const pan = new Producto('bimbo',10,categoria[1]);    
-const galleta = new Producto('pepa',10,categoria[1]);
+const categoria = ['bebida', 'comestible'];
+const coca = new Producto('coca', 10, categoria[0]);
+const birra = new Producto('andes', 11, categoria[0]);
+const pan = new Producto('bimbo', 10, categoria[1]);
+const galleta = new Producto('pepa', 10, categoria[1]);
 
 agregar.agregarProductos(birra);
 agregar.agregarProductos(coca);
@@ -120,13 +120,31 @@ agregar.agregarProductos(pan);
 
 agregar.mostrarProductos();
 
-let buscarPrecio=prompt('ingrese el nombre del producto que quiere saber el precio');
+let buscarPrecio = prompt('ingrese el nombre del producto que quiere saber el precio');
 
+//se realiza busqueda de un producto para saber su precio
 agregar.consultarPrecioProducto(buscarPrecio);
 
-// const mostrar= new Gestion();
+/////////////////////////////////////////////////////
+// const buscar=productos.filter(product=>product.precio >=10); //'filter' devuelve todas las coincidencias encontradas
 
-// mostrar.mostrarProductos();
+// console.log(`se encontro ${encontrado}`);
+
+const {nombre,precio}=producto[0]; //desestructuracion de objetos entre 
+//llaves quedan la propiedades del objeto y se indica despues del igual el objeto 
+//en cuestion ahora poniendo solo el nombre de la propiedad te mostrara el valor de la misma
+console.log(nombre);
+
+// en un array tambien puede usarse 
+
+// const array=['gabriel','cano'];
+// const nombre=array[0];
+
+// const [nombre,apellido]=array; //'nombre' hace referencia al primer parametro del array en posicion 0 
+//y apellido es el elemento en la posicion 1
+
+
+// console.log(nombre, edad);
 
 
 
